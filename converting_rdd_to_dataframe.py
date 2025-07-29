@@ -14,5 +14,5 @@ print("_____________________________")
 
 df_n=rdd.toDF(["dept_name", "dept_id"]) ###coverting RDD to dataframe with column info
 print("_____________________________")
-print(df_n)
+df_n.show()
 print("_____________________________")
