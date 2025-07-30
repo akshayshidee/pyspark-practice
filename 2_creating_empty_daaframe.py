@@ -3,6 +3,8 @@ from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType,StructField, StringType
 
 spark=SparkSession.builder.appName("sparkexample.com").master("local[*]").getOrCreate()
+# Set Spark log level
+spark.sparkContext.setLogLevel("ERROR")
 
 ##### empty dataframe without schema
 df_empty=spark.createDataFrame([],StructType([]))

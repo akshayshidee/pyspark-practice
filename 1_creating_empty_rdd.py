@@ -2,6 +2,8 @@ import pyspark
 from  pyspark.sql import SparkSession
 
 spark=SparkSession.builder.appName('sparkexample.com').master("local[*]").getOrCreate()
+# Set Spark log level
+spark.sparkContext.setLogLevel("ERROR")
 
 emptyRDD=spark.sparkContext.parallelize([])
 print("________________________________")

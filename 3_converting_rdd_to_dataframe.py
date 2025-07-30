@@ -3,6 +3,8 @@ from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType,StructField, StringType
 
 spark=SparkSession.builder.appName("sparkexample.com").master("local[*]").getOrCreate()
+# Set Spark log level
+spark.sparkContext.setLogLevel("ERROR")
 
 data=[("Finance", 10), ("Marketing", 20)]
 rdd=spark.sparkContext.parallelize(data)
