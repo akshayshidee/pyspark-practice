@@ -36,4 +36,6 @@ print("_____________________________")
 print("Sample CITY table:")
 city_df.show()
 
+###solution
+
 city_df.filter(city_df["CountryCode"]=="JPN").select(city_df["Name"]).show()

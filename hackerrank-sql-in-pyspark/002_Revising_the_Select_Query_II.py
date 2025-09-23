@@ -37,4 +37,6 @@ print("_____________________________")
 print("Sample CITY table:")
 city_df.show()
 
+###solution
+
 city_df.filter((city_df["Population"]>120000) & (city_df["CountryCode"]=="USA")).select(city_df["Name"]).show()
