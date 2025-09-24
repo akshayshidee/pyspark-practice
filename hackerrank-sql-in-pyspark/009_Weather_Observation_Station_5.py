@@ -24,9 +24,10 @@
 
 import pyspark
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import length
 
 
-spark=SparkSession.builder.appName('hackerrank8.com').master("local[*]").getOrCreate()
+spark=SparkSession.builder.appName('hackerrank9.com').master("local[*]").getOrCreate()
 # Set Spark log level
 spark.sparkContext.setLogLevel("ERROR")
 
@@ -55,9 +56,21 @@ station_df.show()
 # If there is more than one smallest or largest city,
 # choose the one that comes first when ordered alphabetically.
 
-###################>>>>>>>>>><<<<<<<<<<<< solution
+###################>>>>>>>>>><<<<<<<<<<<< solution 
 
+station_len_df=station_df.withColumn("len_city", length("CITY"))
 
+station_len_df.show()
 
+#### the solution to get shortest city name
+station_len_df.select(station_len_df["CITY"],station_len_df["len_city"])\
+    .orderBy(station_len_df["len_city"].asc(), station_len_df["CITY"].asc())\
+    .limit(1)\
+        .show()
 
+#### the solution to get longest city name
+station_len_df.select(station_len_df["CITY"],station_len_df["len_city"])\
+    .orderBy(station_len_df["len_city"].desc(), station_len_df["CITY"].asc())\
+    .limit(1)\
+        .show()
 
