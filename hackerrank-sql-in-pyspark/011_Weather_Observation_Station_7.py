@@ -9,7 +9,7 @@ import pyspark
 from pyspark.sql import SparkSession
 
 
-spark=SparkSession.builder.appName('hackerrank8.com').master("local[*]").getOrCreate()
+spark=SparkSession.builder.appName('hackerrank11.com').master("local[*]").getOrCreate()
 # Set Spark log level
 spark.sparkContext.setLogLevel("ERROR")
 
@@ -37,4 +37,9 @@ station_df.show()
 # Your result cannot contain duplicates.
 
 ###################>>>>>>>>>><<<<<<<<<<<< solution
-
+#CITY names ending with vowels (a, e, i, o, u) and it is case insensitive search
+#select city column and remove the duplicates
+station_df.filter(station_df["CITY"].rlike("(?i)[aeiou]$"))\
+    .select(station_df["CITY"])\
+        .distinct()\
+            .show()
