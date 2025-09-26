@@ -7,7 +7,7 @@ import pyspark
 from pyspark.sql import SparkSession
 
 
-spark=SparkSession.builder.appName('hackerrank14.com').master("local[*]").getOrCreate()
+spark=SparkSession.builder.appName('hackerrank15.com').master("local[*]").getOrCreate()
 # Set Spark log level
 spark.sparkContext.setLogLevel("ERROR")
 
